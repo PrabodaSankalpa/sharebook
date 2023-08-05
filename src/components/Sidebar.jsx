@@ -21,7 +21,14 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
-import { Add, ListAlt, MenuBook, WavingHand } from "@mui/icons-material";
+import {
+  Add,
+  Favorite,
+  ListAlt,
+  MenuBook,
+  Person,
+  WavingHand,
+} from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -90,7 +97,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const { signOut, currentUser } = useAuth();
@@ -190,7 +197,12 @@ export default function Sidebar() {
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem key="BookFeed" disablePadding sx={{ display: "block" }}>
+          <ListItem
+            key="BookFeed"
+            onClick={props.onDisplayBookFeed}
+            disablePadding
+            sx={{ display: "block" }}
+          >
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -207,10 +219,46 @@ export default function Sidebar() {
               >
                 <MenuBook />
               </ListItemIcon>
-              <ListItemText primary="Book Feed" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText
+                primary="Book Feed"
+                sx={{ opacity: open ? 1 : 0 }}
+              />
             </ListItemButton>
           </ListItem>
-          <ListItem key="AddNewListing" disablePadding sx={{ display: "block" }}>
+          <ListItem
+            key="Favorites"
+            onClick={props.onDisplayFavorites}
+            disablePadding
+            sx={{ display: "block" }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <Favorite />
+              </ListItemIcon>
+              <ListItemText
+                primary="Favorites"
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            key="AddNewListings"
+            onClick={props.onDisplayAddNewListings}
+            disablePadding
+            sx={{ display: "block" }}
+          >
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -227,10 +275,18 @@ export default function Sidebar() {
               >
                 <Add />
               </ListItemIcon>
-              <ListItemText primary="Add New Listing" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText
+                primary="Add New Listings"
+                sx={{ opacity: open ? 1 : 0 }}
+              />
             </ListItemButton>
           </ListItem>
-          <ListItem key="MyListings" disablePadding sx={{ display: "block" }}>
+          <ListItem
+            key="MyListings"
+            onClick={props.onDisplayMyListings}
+            disablePadding
+            sx={{ display: "block" }}
+          >
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -247,10 +303,18 @@ export default function Sidebar() {
               >
                 <ListAlt />
               </ListItemIcon>
-              <ListItemText primary="My Listings" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText
+                primary="My Listings"
+                sx={{ opacity: open ? 1 : 0 }}
+              />
             </ListItemButton>
           </ListItem>
-          <ListItem key="BorrowReq" disablePadding sx={{ display: "block" }}>
+          <ListItem
+            key="BorrowReq"
+            onClick={props.onDisplayBorrowReq}
+            disablePadding
+            sx={{ display: "block" }}
+          >
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -267,7 +331,39 @@ export default function Sidebar() {
               >
                 <WavingHand />
               </ListItemIcon>
-              <ListItemText primary="Borrow Request" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText
+                primary="Borrow Request"
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
+          <Divider />
+          <ListItem
+            key="UserDetails"
+            onClick={props.onDisplayUserDetails}
+            disablePadding
+            sx={{ display: "block" }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <Person />
+              </ListItemIcon>
+              <ListItemText
+                primary="User Details"
+                sx={{ opacity: open ? 1 : 0 }}
+              />
             </ListItemButton>
           </ListItem>
         </List>
