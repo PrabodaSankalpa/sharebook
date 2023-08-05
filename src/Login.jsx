@@ -1,7 +1,7 @@
 import React from "react";
 import Appbar from "./components/Appbar";
 import { useAuth } from "./context/AuthContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
