@@ -68,6 +68,7 @@ export default function AddNewListings() {
         bookImageName: bookImage.name,
         postBy: currentUser.uid,
         bookLikeCount: 0,
+        bookAvailable: true,
       });
       console.log("Document written with ID: ", docRef.id);
       toast.success("Book Added Successfully!", {
