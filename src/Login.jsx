@@ -56,7 +56,7 @@ export default function Login() {
               sx={{ color: myTheme.palette.primary.main }}
               variant={isXs ? "h4" : "h3"}
             >
-              Read, Shrare, Repete, The book lover's mantra
+              Read, Share, Repeat, The book lover's mantra
             </Typography>
             <Typography variant="h5" component="h5">
               This is a Web Application to Share your books with others.

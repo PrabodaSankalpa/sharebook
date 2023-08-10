@@ -3,22 +3,31 @@ import React from "react";
 import AddNewListings from "./AddNewListings";
 import BookFeed from "./BookFeed";
 import MyListings from "./MyListings";
+import SearchBar from "./SearchBar";
+import BorrowRequests from "./BorrowRequests";
+import UserDetails from "./UserDetails";
 
 export default function ContentArea(props) {
   return (
     <Box sx={{ padding: 2 }}>
       {props.selectedMenu === "BookFeed" ? (
-        <BookFeed />
+        <Box>
+          <SearchBar />
+          <BookFeed />
+        </Box>
       ) : props.selectedMenu === "Favorites" ? (
-        <BookFeed />
+        <Box>
+          <SearchBar />
+          <BookFeed />
+        </Box>
       ) : props.selectedMenu === "AddNewListings" ? (
         <AddNewListings />
       ) : props.selectedMenu === "MyListings" ? (
         <MyListings />
       ) : props.selectedMenu === "BorrowReq" ? (
-        <BookFeed />
+        <BorrowRequests />
       ) : props.selectedMenu === "UserDetails" ? (
-        <BookFeed />
+        <UserDetails />
       ) : (
         <BookFeed />
       )}
