@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 export default function MyListings() {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -56,6 +57,7 @@ export default function MyListings() {
                 display: "flex",
                 width: { sm: 850 },
                 flexDirection: isSmallScreen ? "column" : "row",
+                mb:5
               }}
             >
               <CardMedia
@@ -80,9 +82,13 @@ export default function MyListings() {
                     color="text.secondary"
                     component="div"
                   >
-                    {book.authorName}
+                    Author: {book.authorName}
                     <br />
                     ISBN Number: {book.isbnNumber}
+                    <br />
+                    Category: {book.bookCategory}
+                    <br />
+                    Price : {book.bookPrice}
                   </Typography>
 
                   <Box
@@ -112,6 +118,8 @@ export default function MyListings() {
                       variant="outlined"
                       color="secondary"
                       size="small"
+                      component={Link}
+                      to={`/home/mylistings/${book.id}`}
                       sx={{
                         marginLeft: "60px",
                       }}

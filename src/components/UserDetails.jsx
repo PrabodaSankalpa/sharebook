@@ -21,7 +21,7 @@ export default function UserDetails() {
 
   useEffect(() => {
     getUserData();
-  });
+  },[]);
 
   const getUserData = async () => {
     const docRef = doc(db, "usersData", currentUser.uid);

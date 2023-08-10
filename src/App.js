@@ -7,6 +7,8 @@ import Login from "./Login";
 import Home from "./Home";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EditListing from "./components/EditListing";
+import Readmore from "./components/ReadMore";
 
 function App() {
   return (
@@ -14,6 +16,22 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
+            <Route
+              path="/home/mylistings/:id"
+              element={
+                <ProtectedRoute>
+                  <EditListing />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/home/feed/:id"
+              element={
+                <ProtectedRoute>
+                  <Readmore />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/home"
               element={
